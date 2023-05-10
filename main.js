@@ -86,55 +86,40 @@ class Grid {
 
     drawingWins(drawing) {
         let [row1, row2, row3] = this.rows;
+        return (
         // DDD
         // ???
         // ???
-        if (row1[0].drawing == drawing && row1[1].drawing == drawing && row1[2].drawing == drawing) {
-            return true;
-        }
+            (row1[0].drawing == drawing && row1[1].drawing == drawing && row1[2].drawing == drawing)
         // D??
         // D??
         // D??
-        if (row1[0].drawing == drawing && row2[0].drawing == drawing && row3[0].drawing == drawing) {
-            return true;
-        }
+            || (row1[0].drawing == drawing && row2[0].drawing == drawing && row3[0].drawing == drawing)
         // ??D
         // ??D
         // ??D
-        if (row1[2].drawing == drawing && row2[2].drawing == drawing && row3[2].drawing == drawing) {
-            return true;
-        }
+            || (row1[2].drawing == drawing && row2[2].drawing == drawing && row3[2].drawing == drawing)
         // ???
         // ???
         // DDD
-        if (row3[0].drawing == drawing && row3[1].drawing == drawing && row3[2].drawing == drawing) {
-            return true;
-        }
+            || (row3[0].drawing == drawing && row3[1].drawing == drawing && row3[2].drawing == drawing)
         // ???
         // DDD
         // ???
-        if (row2[0].drawing == drawing && row2[1].drawing == drawing && row2[2].drawing == drawing) {
-            return true;
-        }
+            || (row2[0].drawing == drawing && row2[1].drawing == drawing && row2[2].drawing == drawing)
         // ?D?
         // ?D?
         // ?D?
-        if (row1[1].drawing == drawing && row2[1].drawing == drawing && row3[1].drawing == drawing) {
-            return true;
-        }
+            || (row1[1].drawing == drawing && row2[1].drawing == drawing && row3[1].drawing == drawing)
         // D??
         // ?D?
         // ??D
-        if (row1[0].drawing == drawing && row2[1].drawing == drawing && row3[2].drawing == drawing) {
-            return true;
-        }
+            || (row1[0].drawing == drawing && row2[1].drawing == drawing && row3[2].drawing == drawing)
         // ??D
         // ?D?
         // D??
-        if (row1[2].drawing == drawing && row2[1].drawing == drawing && row3[0].drawing == drawing) {
-            return true;
-        }
-        return false;
+            || (row1[2].drawing == drawing && row2[1].drawing == drawing && row3[0].drawing == drawing)
+        );
     }
 }
 
