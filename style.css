@@ -1,0 +1,34 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    background: #333;
+}
+
+body {
+    color: #fff;
+}
+
+body, p, span, button {
+    font-family: 'Roboto', sans-serif;
+}
+
+#game-grid {
+    display: grid;
+    list-style-type: none;
+    grid-template-columns: repeat(3, 100px);
+}
+
+#game-grid > li {
+    border: 1px solid #fff;
+    display: inline-block;
+    color: #fff;
+    height: 100px;
+}
+
+#game-grid > li[data-drawing="x"]::before {
+    content: "x";
+}
+
+#game-grid > li[data-drawing="o"]::before {
+    content: "o";
+}
