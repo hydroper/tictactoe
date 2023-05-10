@@ -15,21 +15,23 @@ class Main {
         for (let row of this.grid.rows) {
             for (let col of row) {
                 let colHTMLElement = colTemplate.content.cloneNode(true).children[0];
-                colHTMLElement.addEventListener('click', e => {
-                    let colHTMLElement = e.target;
-                    let col = this.htmlElementsToGridColumns.get(colHTMLElement);
-                    if (col.drawing == GridColumnDrawing.EMPTY && this.turn != Turn.NONE) {
-                        col.drawing = this.turn == Turn.X ? GridColumnDrawing.X : GridColumnDrawing.O;
-                        colHTMLElement.setAttribute('data-drawing', col.drawing.toString());
-                        this.turn = this.turn == Turn.X ? Turn.O : Turn.X;
-                        if (this.grid.full) {
-                            this.gameComplete();
-                        }
-                    }
-                });
+                colHTMLElement.addEventListener('click', this.onColumnClick.bind(this));
                 gameGridHTMLEl.appendChild(colHTMLElement);
                 this.gridColHTMLElements.set(col, colHTMLElement);
                 this.htmlElementsToGridColumns.set(colHTMLElement, col);
+            }
+        }
+    }
+
+    onColumnClick(e) {
+        let colHTMLElement = e.target;
+        let col = this.htmlElementsToGridColumns.get(colHTMLElement);
+        if (col.drawing == GridColumnDrawing.EMPTY && this.turn != Turn.NONE) {
+            col.drawing = this.turn == Turn.X ? GridColumnDrawing.X : GridColumnDrawing.O;
+            colHTMLElement.setAttribute('data-drawing', col.drawing.toString());
+            this.turn = this.turn == Turn.X ? Turn.O : Turn.X;
+            if (this.grid.full) {
+                this.gameComplete();
             }
         }
     }
@@ -62,6 +64,22 @@ class Grid {
 
     get full() {
         return this.rows.every(row => row.every(c => c.drawing != GridColumnDrawing.EMPTY));
+    }
+
+    drawingWins(drawing) {
+        let [row1, row2, row3] = this.rows;
+        // DDD
+        // ???
+        // ???
+        if (row1[0].drawing == drawing && row1[1].drawing == drawing && row1[2].drawing == drawing) {
+            return true;
+        }
+        // D??
+        // D??
+        // D??
+        if (row1[0].drawing == drawing && row2[0].drawing == drawing && row3[0].drawing == drawing) {
+            return true;
+        }
     }
 }
 

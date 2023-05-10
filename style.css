@@ -25,10 +25,15 @@ body, p, span, button {
     height: 100px;
 }
 
-#game-grid > li[data-drawing="x"]::before {
-    content: "x";
+#game-grid > li[data-drawing="x"] {
+    background: url("./img/x.png") no-repeat;
 }
 
-#game-grid > li[data-drawing="o"]::before {
-    content: "o";
+#game-grid > li[data-drawing="o"] {
+    background: url("./img/o.png") no-repeat;
+}
+
+main[data-state="idle"] #game-result,
+main[data-state="playing"] #game-result {
+    display: none;
 }
