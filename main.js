@@ -6,6 +6,7 @@ class Main {
         this.turn = Turn.NONE;
 
         this.initializeGrid();
+        this.initializeUI();
         this.gameStart();
     }
 
@@ -36,6 +37,12 @@ class Main {
         }
     }
 
+    initializeUI() {
+        document.querySelector('#restart-button').addEventListener('click', e => {
+            this.gameStart();
+        });
+    }
+
     gameStart() {
         document.querySelector('main').setAttribute('data-state', 'playing');
         this.turn = Turn.X;
@@ -48,8 +55,19 @@ class Main {
     }
 
     gameComplete() {
-        document.querySelector('main').setAttribute('data-state', 'idle');
+        document.querySelector('main').setAttribute('data-state', 'complete');
         this.turn = Turn.NONE;
+        let xWins = this.grid.drawingWins(GridColumnDrawing.X);
+        let oWins = this.grid.drawingWins(GridColumnDrawing.O);
+        if (xWins && !oWins) {
+            document.querySelector('#game-result').textContent = 'X wins';
+        }
+        else if (oWins && !xWins) {
+            document.querySelector('#game-result').textContent = 'O wins';
+        }
+        else {
+            document.querySelector('#game-result').textContent = 'Draw';
+        }
     }
 }
 
@@ -80,6 +98,43 @@ class Grid {
         if (row1[0].drawing == drawing && row2[0].drawing == drawing && row3[0].drawing == drawing) {
             return true;
         }
+        // ??D
+        // ??D
+        // ??D
+        if (row1[2].drawing == drawing && row2[2].drawing == drawing && row3[2].drawing == drawing) {
+            return true;
+        }
+        // ???
+        // ???
+        // DDD
+        if (row3[0].drawing == drawing && row3[1].drawing == drawing && row3[2].drawing == drawing) {
+            return true;
+        }
+        // ???
+        // DDD
+        // ???
+        if (row2[0].drawing == drawing && row2[1].drawing == drawing && row2[2].drawing == drawing) {
+            return true;
+        }
+        // ?D?
+        // ?D?
+        // ?D?
+        if (row1[1].drawing == drawing && row2[1].drawing == drawing && row3[1].drawing == drawing) {
+            return true;
+        }
+        // D??
+        // ?D?
+        // ??D
+        if (row1[0].drawing == drawing && row2[1].drawing == drawing && row3[2].drawing == drawing) {
+            return true;
+        }
+        // ??D
+        // ?D?
+        // D??
+        if (row1[2].drawing == drawing && row2[1].drawing == drawing && row3[0].drawing == drawing) {
+            return true;
+        }
+        return false;
     }
 }
 
