@@ -86,39 +86,14 @@ class Grid {
 
     drawingWins(drawing) {
         let [row1, row2, row3] = this.rows;
-        return (
-        // DDD
-        // ???
-        // ???
-            (row1[0].drawing == drawing && row1[1].drawing == drawing && row1[2].drawing == drawing)
-        // D??
-        // D??
-        // D??
-            || (row1[0].drawing == drawing && row2[0].drawing == drawing && row3[0].drawing == drawing)
-        // ??D
-        // ??D
-        // ??D
-            || (row1[2].drawing == drawing && row2[2].drawing == drawing && row3[2].drawing == drawing)
-        // ???
-        // ???
-        // DDD
-            || (row3[0].drawing == drawing && row3[1].drawing == drawing && row3[2].drawing == drawing)
-        // ???
-        // DDD
-        // ???
-            || (row2[0].drawing == drawing && row2[1].drawing == drawing && row2[2].drawing == drawing)
-        // ?D?
-        // ?D?
-        // ?D?
-            || (row1[1].drawing == drawing && row2[1].drawing == drawing && row3[1].drawing == drawing)
-        // D??
-        // ?D?
-        // ??D
-            || (row1[0].drawing == drawing && row2[1].drawing == drawing && row3[2].drawing == drawing)
-        // ??D
-        // ?D?
-        // D??
-            || (row1[2].drawing == drawing && row2[1].drawing == drawing && row3[0].drawing == drawing)
+        return ((row1[0].drawing == drawing && row1[1].drawing == drawing && row1[2].drawing == drawing)
+            ||  (row1[0].drawing == drawing && row2[0].drawing == drawing && row3[0].drawing == drawing)
+            ||  (row1[2].drawing == drawing && row2[2].drawing == drawing && row3[2].drawing == drawing)
+            ||  (row3[0].drawing == drawing && row3[1].drawing == drawing && row3[2].drawing == drawing)
+            ||  (row2[0].drawing == drawing && row2[1].drawing == drawing && row2[2].drawing == drawing)
+            ||  (row1[1].drawing == drawing && row2[1].drawing == drawing && row3[1].drawing == drawing)
+            ||  (row1[0].drawing == drawing && row2[1].drawing == drawing && row3[2].drawing == drawing)
+            ||  (row1[2].drawing == drawing && row2[1].drawing == drawing && row3[0].drawing == drawing)
         );
     }
 }
