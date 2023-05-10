@@ -31,7 +31,7 @@ class Main {
             col.drawing = this.turn == Turn.X ? GridColumnDrawing.X : GridColumnDrawing.O;
             colHTMLElement.setAttribute('data-drawing', col.drawing.toString());
             this.turn = this.turn == Turn.X ? Turn.O : Turn.X;
-            if (this.grid.full) {
+            if (this.grid.full || this.grid.drawingWins(GridColumnDrawing.X) || this.grid.drawingWins(GridColumnDrawing.O)) {
                 this.gameComplete();
             }
         }
