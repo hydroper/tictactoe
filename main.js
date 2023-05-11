@@ -15,7 +15,7 @@ class Main {
         let gameGridHTMLEl = document.getElementById('game-grid');
         for (let row of this.grid.rows) {
             for (let col of row) {
-                let colHTMLElement = colTemplate.content.cloneNode(true).children[0];
+                let [colHTMLElement] = colTemplate.content.cloneNode(true).children;
                 colHTMLElement.addEventListener('click', this.onColumnClick.bind(this));
                 gameGridHTMLEl.appendChild(colHTMLElement);
                 this.gridColHTMLElements.set(col, colHTMLElement);
@@ -24,8 +24,7 @@ class Main {
         }
     }
 
-    onColumnClick(e) {
-        let colHTMLElement = e.target;
+    onColumnClick({target: colHTMLElement}) {
         let col = this.htmlElementsToGridColumns.get(colHTMLElement);
         if (col.drawing == GridColumnDrawing.EMPTY && this.turn != Turn.NONE) {
             col.drawing = this.turn == Turn.X ? GridColumnDrawing.X : GridColumnDrawing.O;
