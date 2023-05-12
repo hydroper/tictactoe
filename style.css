@@ -12,6 +12,12 @@ body, p, span, button {
     font-family: 'Roboto', sans-serif;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #game-grid {
     display: inline-grid;
     padding: 0;

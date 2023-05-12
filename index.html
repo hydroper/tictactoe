@@ -11,24 +11,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--
-    <header>
-        <span>TicTacToe</span>
-        <button id="toggle-dark-theme"></button>
-    </header>
-    -->
     <main data-state="idle">
-        <div>
-            <ul id="game-grid">
-                <template id="game-grid-column">
-                    <li data-drawing="empty"></li>
-                </template>
-            </ul>
-        </div>
+        <ul id="game-grid">
+            <template id="game-grid-column">
+                <li data-drawing="empty"></li>
+            </template>
+        </ul>
         <h1 id="game-result">Result Text</h1>
-        <div>
-            <button id="restart-button">Restart</button>
-        </div>
+        <button id="restart-button">Restart</button>
     </main>
     <script src="main.js"></script>
 </body>
